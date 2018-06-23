@@ -2,7 +2,7 @@ package com.lwu.geekhub.ui.modules.main
 
 import android.os.Bundle
 import com.lwu.geekhub.R
-import com.lwu.geekhub.ui.modules.base.NavActivity
+import com.lwu.geekhub.ui.base.NavActivity
 
 class MainActivity : NavActivity() {
 

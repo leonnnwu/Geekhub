@@ -1,4 +1,4 @@
-package com.lwu.geekhub.ui.modules.base
+package com.lwu.geekhub.ui.base
 
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView

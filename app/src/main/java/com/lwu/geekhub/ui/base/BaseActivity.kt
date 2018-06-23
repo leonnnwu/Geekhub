@@ -1,8 +1,10 @@
-package com.lwu.geekhub.ui.modules.base
+package com.lwu.geekhub.ui.base
 
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.lwu.geekhub.helper.TOKEN
+import com.lwu.geekhub.helper.getSharedPref
 import com.lwu.geekhub.ui.modules.login.LoginActivity
 import io.reactivex.disposables.CompositeDisposable
 
@@ -14,7 +16,8 @@ abstract class BaseActivity: AppCompatActivity() {
     private lateinit var compositeDisposable: CompositeDisposable
 
     abstract val contentViewResource: Int
-    open val loginRequired: Boolean = true
+    open val loginRequired: Boolean
+        get() = getSharedPref().getString(TOKEN, "").isNullOrEmpty()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
