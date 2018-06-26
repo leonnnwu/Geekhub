@@ -11,15 +11,15 @@ import retrofit2.http.*
  */
 interface LoginServiceApi {
     @POST("authorizations")
-    fun login(@Body authMode: AuthMode): Single<Response<AccessToken>>
+    fun login(@Body authMode: AuthMode): Single<AccessToken>
 
     @FormUrlEncoded
-    @POST("access_token") @Headers("Accept: application/json")
+    @POST("access_token")
     fun getAccessToken(@Field("code") code: String,
                        @Field("client_id") clientId: String,
                        @Field("client_secret") clientSecret: String,
                        @Field("state") state: String,
-                       @Field("redirect_uri") redirectUri: String): Single<Response<AccessToken>>
+                       @Field("redirect_uri") redirectUri: String): Single<AccessToken>
 }
 
 class LoginService(token: String? = null): RetrofitServiceBase<LoginServiceApi>(
@@ -30,7 +30,7 @@ class LoginService(token: String? = null): RetrofitServiceBase<LoginServiceApi>(
                        clientId: String,
                        clientSecret: String,
                        state: String,
-                       redirectUri: String): Single<Response<AccessToken>> =
+                       redirectUri: String): Single<AccessToken> =
         service.getAccessToken(code, clientId, clientSecret, state, redirectUri)
 
     override val baseUrl: String = "https://github.com/login/oauth/"

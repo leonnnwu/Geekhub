@@ -7,7 +7,9 @@ import android.view.View
 import android.widget.Toast
 import com.lwu.geekhub.BuildConfig
 import com.lwu.geekhub.R
+import com.lwu.geekhub.data.network.model.AccessToken
 import com.lwu.geekhub.data.network.service.LoginService
+import com.lwu.geekhub.data.network.service.UserService
 import com.lwu.geekhub.helper.*
 import com.lwu.geekhub.ui.base.BaseActivity
 import com.lwu.geekhub.ui.modules.main.MainActivity
@@ -53,16 +55,26 @@ class LoginActivity : BaseActivity() {
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe (
-                        {  response ->
+                        {  accessToken ->
                             //TODO: Error handling
-                            getSharedPref().edit().putString(TOKEN, response.body()?.token).apply()
-                            startActivity(Intent(this, MainActivity::class.java).apply {
-                                addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                            })
-                            finish()
+                            onTokenResponse(accessToken)
                         }
                     )
             }
         }
+    }
+
+    private fun onTokenResponse(accessToken: AccessToken) {
+        getSharedPref().edit().putString(TOKEN, accessToken.access_token).commit()
+        UserService(accessToken.access_token).getUser()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe { user ->
+                getSharedPref().edit().putString(USERNAME, user.login).commit()
+                startActivity(Intent(this, MainActivity::class.java).apply {
+                    addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                })
+                finish()
+            }
     }
 }
