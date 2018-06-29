@@ -1,9 +1,8 @@
 package com.lwu.geekhub.data.network.service
 
-import com.lwu.geekhub.data.network.model.AccessToken
-import com.lwu.geekhub.data.network.model.AuthMode
+import com.lwu.geekhub.data.model.AccessToken
+import com.lwu.geekhub.data.model.AuthMode
 import io.reactivex.Single
-import retrofit2.Response
 import retrofit2.http.*
 
 /**

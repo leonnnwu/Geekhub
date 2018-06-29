@@ -1,4 +1,4 @@
-package com.lwu.geekhub.data.network.model
+package com.lwu.geekhub.data.model
 
 /**
  * Created by lwu on 6/18/18.

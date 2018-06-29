@@ -1,6 +1,6 @@
 package com.lwu.geekhub.data.network.service
 
-import com.lwu.geekhub.data.network.model.User
+import com.lwu.geekhub.data.model.User
 import io.reactivex.Single
 import retrofit2.http.GET
 
