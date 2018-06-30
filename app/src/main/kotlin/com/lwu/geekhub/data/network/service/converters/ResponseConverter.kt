@@ -13,18 +13,18 @@ import java.lang.reflect.Type
 class ResponseConverter : Converter.Factory() {
 
     override fun responseBodyConverter(
-        type: Type?,
-        annotations: Array<out Annotation>?,
-        retrofit: Retrofit?
+        type: Type,
+        annotations: Array<out Annotation>,
+        retrofit: Retrofit
     ): Converter<ResponseBody, *>? {
         return MoshiConverterFactory.create().responseBodyConverter(type, annotations, retrofit)
     }
 
     override fun requestBodyConverter(
-        type: Type?,
-        parameterAnnotations: Array<out Annotation>?,
-        methodAnnotations: Array<out Annotation>?,
-        retrofit: Retrofit?
+        type: Type,
+        parameterAnnotations: Array<out Annotation>,
+        methodAnnotations: Array<out Annotation>,
+        retrofit: Retrofit
     ): Converter<*, RequestBody>? {
         return MoshiConverterFactory.create().requestBodyConverter(type, parameterAnnotations, methodAnnotations, retrofit)
     }
