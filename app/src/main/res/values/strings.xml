@@ -17,7 +17,7 @@
     <string name="error_field_required">This field is required</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
     <string name="sign_in_using_github_account">Sign in via Oauth</string>
-    <string name="sign_in_btn">Open in browser</string>
+    <string name="sign_in_btn">Login via OAuth</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="empty_error">Required field</string>

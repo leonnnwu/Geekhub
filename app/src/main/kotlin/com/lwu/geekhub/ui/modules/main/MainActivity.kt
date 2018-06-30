@@ -19,7 +19,9 @@ class MainActivity : NavActivity() {
 
         userViewModel.loadCurrentUser()
         userViewModel.currentUser.observe(this, Observer<User> { user ->
-            message.text = getString(R.string.title_welcome, user?.login)
+            if (user != null) {
+                message.text = getString(R.string.title_welcome, user.login)
+            }
         })
     }
 }

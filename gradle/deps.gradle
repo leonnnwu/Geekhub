@@ -9,7 +9,7 @@ ext {
             okhttp      :   '3.10.0',
             junit       :   '4.12',
             android : [
-                    support     :   '27.1.1',
+                    support     :   '28.0.0-alpha3',
                     runner      :   '1.0.2',
                     espresso    :   '3.0.2',
                     room        :   '1.1.1',
